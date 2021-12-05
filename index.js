@@ -17,6 +17,16 @@ async function findShow(query){
     return data
 }
 
-findShow('friends').then(data =>{
-    console.log(data)
+findShow('friends').then(show =>{
+    console.log(show)
+    document.body.innerHTML = `<div class = "the-show">
+    <div class = "show-title">${show.name}</div>
+    <div class = "show-summary">${show.summary}</div>
+     ${show._embedded.seasons.map(season =>{
+         return `<div class ="show-season"> Season ${season.number}</div>`}).join('')
+         
+         }
+         
+    </div>
+    `
 })
